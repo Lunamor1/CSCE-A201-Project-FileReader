@@ -167,5 +167,8 @@ void TextPlayer::playTutorial()
 		<< "4: quarter note\n"
 		<< "7: dotted eighth note\n"
 		<< "8: eighth note\n"
-		<< "16: sixteenth note\n\n";
+		<< "16: sixteenth note\n\n"
+
+		<< "There are some pre-loaded files available to be played. Their names are as follows: \n"
+		<< "'Full Scale.txt', 'HappyBirthday.txt', 'MaryLamb.txt', 'OdeToJoy.txt', 'Twinkle.txt'\n\n";
 }
