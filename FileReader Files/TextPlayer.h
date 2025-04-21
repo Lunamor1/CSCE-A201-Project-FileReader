@@ -1,3 +1,6 @@
+// This class is made to take a file that user writes and play music after reading through the file.
+// Instructions on how to use the class and how to make a .txt file that is readable are included in playTutorial().
+
 #pragma once
 
 #ifndef TEXT_PLAYER_H

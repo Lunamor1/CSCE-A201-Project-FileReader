@@ -7,9 +7,10 @@
 
 TextPlayer::TextPlayer()
 {
-	/* Full values stored in case needed for later use, but will be rounded & converted to int if used in playFileMusic().
-	Currently contains the full range of a piano, but can be added to for even more notes!
-	Note: includes duplicates such as "A#0" and "Bb0" for more user freedom in .txt file */
+	// This is a full list of the notes on a piano and their frequencies.
+	// Full values stored in case needed for later use, but will be rounded & converted to int if used in playFileMusic().
+	// Currently contains the full range of a piano, but can be added to for even more notes!
+	// Note: includes duplicates such as "A#0" and "Bb0" for more user freedom in .txt file.
 	noteFreq = {
 		{"A0", 27.5}, {"A#0", 29.13524}, {"Bb0", 29.13524}, {"B0", 30.86771},
 		{"C1", 32.70320}, {"C#1", 34.64783}, {"Db1", 34.64783}, {"D1", 36.70810},
@@ -53,12 +54,16 @@ TextPlayer::TextPlayer()
 	dottedEighthNote = 0.0;
 	wholeNote = 0.0;
 }
-// Seems like a useful function to have access to for these things
+// Simply rounds a double and converts it into an int that gets returned. 
+// Is useful when wanting to convert a double to an int without truncation
 int TextPlayer::roundDouble(double num)
 {
 	return static_cast<int>(round(num));
 }
 
+// A series of if-else statements to determine which note length to return 
+// based off of the number read from .txt file, also checks for errors by returning -1
+// Accepts an int and returns a double 
 double TextPlayer::findNoteLength(int noteLength) const
 {
 	if (noteLength == 1) {
@@ -87,6 +92,9 @@ double TextPlayer::findNoteLength(int noteLength) const
 	}
 }
 
+// The function the class is built for; this function handles all of the file reading and music playing
+// This function features various error checks throughout its length.
+// The function accepts a file that is read. 
 void TextPlayer::playFileMusic(std::string& fileName)
 {
 	std::ifstream file(fileName);
@@ -106,7 +114,9 @@ void TextPlayer::playFileMusic(std::string& fileName)
 	}
 	lineNum++;
 
-	quarterNote = (60.0 / bpm) * 1000.0; // *1000 converts to milliseconds for Beep(), 60/bpm finds how many seconds are necessary
+	// *1000 converts to milliseconds for Beep(), 60/bpm finds how many seconds are necessary.
+	// All notes are created from ratios with quarterNote.
+	quarterNote = (60.0 / bpm) * 1000.0;
 	eighthNote = (quarterNote / 2.0);
 	sixteenthNote = (quarterNote / 4.0);
 	halfNote = (quarterNote * 2.0);
@@ -117,6 +127,8 @@ void TextPlayer::playFileMusic(std::string& fileName)
 	std::string currentNote;
 	int noteLengthNum;
 
+	// This loop is what iterates through the loop and plays the music. 
+	// It includes error checking for notes and note lengths.
 	while (file >> currentNote >> noteLengthNum) {
 		lineNum++;
 		double noteLength = findNoteLength(noteLengthNum);
@@ -145,6 +157,7 @@ void TextPlayer::playFileMusic(std::string& fileName)
 	file.close();
 }
 
+// This function is simply a tutorial for the system that can be triggered in main().
 void TextPlayer::playTutorial()
 {
 	std::cout << "This program will take a file and turn it into music!\n"

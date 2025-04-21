@@ -1,4 +1,4 @@
-// Main for FilePlayer
+// This project reads a .txt file and outputs music, using the TextPlayer class.
 
 #include <iostream>
 #include <string>
