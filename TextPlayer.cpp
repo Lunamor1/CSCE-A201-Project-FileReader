@@ -144,3 +144,28 @@ void TextPlayer::playFileMusic(std::string& fileName)
 	
 	file.close();
 }
+
+void TextPlayer::playTutorial()
+{
+	std::cout << "This program will take a file and turn it into music!\n"
+		<< "To use this program you must make a txt file, put the bpm of your song on the first line,"
+		<< "and put notes and their duration on each following line.\n"
+		<< "To write notes, you write the letter name of the note, whether it is flat(b) or sharp(#), its octave number,"
+		<< "then a space, and the length of the note in number form.\n\n"
+
+		<< "Ex:\n"
+		<< "120     //(<- The bpm)\n"
+		<< "Ab4 4   //(<- A flat 4, for a quarter note)\n"
+		<< "rest 2  //(<- Rest in the song for a half measure)\n"
+		<< "D#6 8   //(<- D sharp 6 for an eigth note)\n"
+		<< "C5 1    //(<- C 5 for a whole note)\n\n"
+
+		<< "The current list of supported note lengths and their numbers is as follows:\n"
+		<< "1: whole note\n"
+		<< "2: half note\n"
+		<< "3: dotted half note\n"
+		<< "4: quarter note\n"
+		<< "7: dotted eighth note\n"
+		<< "8: eighth note\n"
+		<< "16: sixteenth note\n\n";
+}

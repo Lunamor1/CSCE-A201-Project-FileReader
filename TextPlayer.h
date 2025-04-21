@@ -22,10 +22,9 @@ private:
 public:
 	TextPlayer();
 	int roundDouble(double num);
-
 	double findNoteLength(int noteLength) const;
-
 	void playFileMusic(std::string& fileName);
+	void playTutorial();
 };
 
 #endif
