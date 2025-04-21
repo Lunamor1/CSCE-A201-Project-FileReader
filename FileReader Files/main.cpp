@@ -13,7 +13,8 @@ int main()
 	string fileName;
 	char userChoice;
 
-	cout << "Do you want a tutorial? (y/n): ";
+	cout << "You can choose to experience a tutorial. This will teach you how to write files to be played as music, and will provide the names of some files currently available to be played.\n"
+	     << "Do you want a tutorial? (y/n): ";
 	cin >> userChoice;
 	cin.ignore();
 	cout << endl;
